@@ -14,9 +14,10 @@ export default function Home() {
       {check && (
         <>
           <Redirect to="/Detail" /> 
+          <Student SetDetail={SetDetail} />
         </>
       )}
-      <Student SetDetail={SetDetail} />
+      <h3 align="center" >...loading</h3>
     </div>
   )
 }
