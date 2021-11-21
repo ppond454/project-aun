@@ -19,12 +19,10 @@ function App() {
     isLoggedIn: false,
     cerrentUser: null,
     errorMessage: null,
-    check: false,
   })
 
   const [check, setCheck] = useState(false)
   const [rawData, setRawData] = useState(null)
-
 
   const [detail, SetDetail] = useState({
     range: 0,
@@ -45,7 +43,7 @@ function App() {
           cerrentUser: user,
           errorMessage: null,
         })
-        sessionStorage.setItem("session",true)
+        sessionStorage.setItem("session", true)
         db.database()
           .ref(`Data`)
           .on("value", (snap) => {
@@ -59,9 +57,14 @@ function App() {
             const findUser = emailList.filter((val) => {
               return val.email === user.email
             })
-  
             const check = Object.keys(findUser).length !== 0 // เช็คว่าเคยลงทะเบียนหรือยัง?
-            setCheck(check)
+            if(check){
+              setCheck(check)
+              sessionStorage.setItem("check", true)
+            }
+            
+            
+
             if (check) {
               SetDetail({
                 id: findUser[0].id,
@@ -77,26 +80,26 @@ function App() {
       }
     })
   }, [])
-
+  
   return (
     <contextSession.Provider
-      value={{ setSession, session, SetDetail, detail, check ,rawData }}
+      value={{ setSession, session, SetDetail, detail, check, rawData }}
     >
       {/* เช็ค Login */}
       {session.isLoggedIn ? (
         <>
-          {check ? <Redirect to="/Detail" /> : <Redirect to="/"/>}
+          {sessionStorage.getItem("session") ? <Redirect to="/Detail" /> : <Redirect to="/Home" />}
           <Nav />
-          <Route exact path={["/Home", "/"]} component={Home} />
+          <Route exact path="/Home" component={Home} />
           <Route path="/Queue" component={Queue} />
           <Route path="/Detail" component={Detail} />
           <Route path="/News" component={News} />
         </>
       ) : (
         <>
-          <Redirect to="/login" />
           {!sessionStorage.getItem("session") ? (
             <>
+              <Redirect to="/login" />
               <Route path="/login" component={Login} />
             </>
           ) : (

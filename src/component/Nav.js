@@ -27,7 +27,7 @@ export default function Nav() {
       })
 
     })
-    sessionStorage.removeItem("session")
+    sessionStorage.clear()
     localStorage.clear()
     history.push("/login")
   }
@@ -43,7 +43,7 @@ export default function Nav() {
           <ul className="ul-nav">
             <li className="li-nav">
               <NavLink
-                to={"/Home"}
+                to="/Home" 
                 activeStyle={{
                   fontWeight: "bold",
                   color: "blue",

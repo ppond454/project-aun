@@ -15,7 +15,7 @@ export default function Queue() {
 
   return (
     <div>
-      {!check && !localStorage.getItem("studentID") && <Redirect to="Home"/> }
+      {!check && !localStorage.getItem("studentID") && <Redirect to="/Home"/> }
       {state.range > 0 ? (
         <DropDura1 state={state} />
       ) : (

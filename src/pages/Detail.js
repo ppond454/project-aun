@@ -11,7 +11,7 @@ export default function Detail() {
 
   return (
     <>
-      {!check && history.push("Queue")}
+      {!check && history.push("/Queue")}
       <div>
         <h1 className="p3"> รายละเอียดการจอง </h1>
         <div className="detail">

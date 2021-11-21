@@ -1,12 +1,7 @@
-import React, { useState ,useContext } from 'react';
-import { useHistory } from 'react-router-dom';
 
 import '../App.css';
-import { contextSession } from "../App"
-
 
 function Duration1({ setState }) {
-    const { check } = useContext(contextSession)
 
    
     const range = [
@@ -28,8 +23,6 @@ function Duration1({ setState }) {
         },
 
     ]
-    console.log(check)
-
 
 
     return (

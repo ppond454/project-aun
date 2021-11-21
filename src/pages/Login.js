@@ -32,6 +32,8 @@ const Login = () => {
           isLoggedIn: true,
           currentUser: user,
         })
+
+        
         window.location.reload()
         history.push("/Home") // เมื่อ login สำเร็จ redirectไปหน้า home
         
