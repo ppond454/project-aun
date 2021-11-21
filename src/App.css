@@ -1,0 +1,222 @@
+
+.App {
+
+  text-align: center;
+
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.Box {
+  background-color: #ffffff;
+  width: 600px;
+  border: 1px solid black;
+  padding: 100px;
+  margin:  20px 50px 400px 100px;
+ 
+}
+.button{
+  background-image: linear-gradient(-225deg, #7DE2FC 0%, #B9B6E5 100%);
+  width: 100px;
+  height: 30px;
+  border-radius:10px;
+  font-size: calc(5px + 1.5vmin);
+  float: left;
+  border: 1px solid rgb(249, 250, 249)
+ }
+.holder{
+  width: 10cm;
+  height: 30px;
+
+}
+.pleaseinputtext{
+  font-size: calc(5px + 1.3vmin);
+  font-weight: bold;
+}
+.button:hover {
+  background-image: linear-gradient(-225deg, #22E1FF 0%, #1D8FE1 48%, #625EB1 100%);
+  color: white;
+}
+.AppBG{
+  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+}
+.DBox1 {
+  background-color: #ffffff;
+  width: 10px;
+  border: 1px solid black;
+  padding: 100px;
+  margin: 200px;
+ 
+}
+.h1 {
+   
+  font-size: calc(10px + 3.0vmin);
+  font-weight: bold;
+}
+
+
+.buttonD1{
+  border: 0px;
+  width: 100px;
+  height: 100px;
+  background-image: linear-gradient(to top, #fff1eb 10%, #ace0f9 100%);
+  border: 2px;
+  border-radius: 15px
+ 
+ 
+}
+.dura{
+margin: 0px 550px 150px 600px;
+}
+
+.topbox{
+   
+    background-color: #90c3ec;
+    width: 2000px;
+    height: 100px;
+    border: 0px ;
+    margin: 0px;
+    border: 2px;
+    border-radius: 10px
+   
+  }
+  .psulogo{
+   padding: 10px;
+   margin: 20px 0px 0px 0px;
+
+  }
+  .h2header{
+    display: flex;
+    margin: 100px 550px 150px 600px;
+    height: 50;
+    justify-content: center;
+    align-items: center;
+    font-family: "Lucida Console", "Courier New", monospace;
+    font-size: 20px;
+    text-align: center;
+}
+
+
+.Boxtodo {
+  background-color: #ffffff;
+  width: 500px;
+  border: 1px solid black;
+  padding: 50px;
+  margin:  150px 550px 500px 650px;
+ 
+}
+.psulogo2{
+  padding: 10px;
+  margin: 20px 0px 0px 1450px;
+}
+
+
+.Drop1{
+  background-color: #ffffff;
+  width: 250px;
+  border: 0px solid black;
+  padding: 30px;
+  margin:  20px 20px 20px 20px;
+ 
+}
+.Drop2{
+  background-color: #ffffff;
+  width: 250px;
+  border: 0px solid black;
+  padding: 30px;
+  margin:  20px 20px 20px 20px;
+}
+
+.d1d1-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 16px;
+  row-gap: 16px;
+
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 400px;
+  padding-right: 200px;
+  padding-top: 50px;
+}
+.rowDrop{
+  background-color: #ffffff;
+  width: 1500px;
+  border: 0px solid black;
+  padding: 10px;
+  margin:  100px 50px 50px 200px;
+ 
+  
+}
+
+
+.ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(255, 255, 255);
+}
+
+.li {
+  float: left;
+}
+
+.lia {
+  display: block;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+.lia:hover {
+  background-color: rgb(253, 253, 253);
+}
+
+.p3 {
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-size: 20px;
+  text-align: center;
+  margin:  100px 50px 50px 70px;
+}
+.bglog{
+  background-color: #4F80C0;
+}
+.detail{
+  padding: 40px 20px;
+  text-align: center;
+}
