@@ -11,13 +11,15 @@ export default function Home() {
 
   return (
     <div>
-      {check && (
+      {check ? 
         <>
           <Redirect to="/Detail" /> 
-          <Student SetDetail={SetDetail} />
+          <h3>...loading</h3>
         </>
-      )}
-      <h3 align="center" >...loading</h3>
+        :
+        <Student SetDetail={SetDetail} />
+      }
+      
     </div>
   )
 }
