@@ -5,8 +5,7 @@ import "../App.css"
 import { Redirect } from "react-router-dom"
 
 export default function Home() {
-  const { check } = useContext(contextSession)
-  console.log(check)
+  const {  check } = useContext(contextSession)
 
   return (
     <div>

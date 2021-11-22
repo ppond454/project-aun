@@ -21,6 +21,7 @@ function App() {
   const [getTime, setTime] = useState(null)
   const [getType, setType] = useState(null)
 
+
   const [session, setSession] = useState({
     isLoggedIn: false,
     cerrentUser: null,
@@ -39,8 +40,9 @@ function App() {
     type: null,
     studentID: null,
   })
-console.log(detail);
+
   useEffect(() => {
+
     auth.onAuthStateChanged((user) => {
       // เช็คสถานะ login
       if (user) {
@@ -65,8 +67,8 @@ console.log(detail);
             })
             const check = Object.keys(findUser).length !== 0 // เช็คว่าเคยลงทะเบียนหรือยัง?
             if (check) {
-              setCheck(check)
               sessionStorage.setItem("check", true)
+              setCheck(check)
             }
             // console.log(findUser);
 
@@ -82,6 +84,7 @@ console.log(detail);
               })
             }
           })
+          
       }
     })
   }, [])

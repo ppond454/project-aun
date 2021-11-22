@@ -45,7 +45,6 @@ function DropDura1() {
   ]
 
   const handleChange1 = (obj) => {
-
     setTime(obj)
   }
 
@@ -79,8 +78,8 @@ function DropDura1() {
         }
         // console.log(pushData)
         db.database().ref(`Data`).push(pushData)
-        setCheck(false)
 
+        setCheck(true)
         localStorage.setItem("time", getTime)
         localStorage.setItem("type", getType)
       }

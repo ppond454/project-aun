@@ -8,7 +8,7 @@ export default function Detail() {
 
   const { detail, check} = useContext(contextSession)
 
-  console.log(detail)
+
   return (
     <>
       {!check ? history.push("/Queue") : null }
