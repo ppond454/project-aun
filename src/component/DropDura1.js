@@ -7,18 +7,29 @@ import { useHistory } from "react-router-dom"
 import { time1, time2, time3, time4 } from "../dataTime/index"
 import { contextSession } from "../App"
 
-function DropDura1({ state }) {
-  const { SetDetail, detail, session, check } = useContext(contextSession)
+function DropDura1() {
+  const {
+    detail,
+    session,
+    check,
+    getRange,
+    getTimeRange,
+    setTime,
+    setType,
+    getTime,
+    getType,
+  } = useContext(contextSession)
+
   const history = useHistory()
 
   const seletTime = () => {
-    if (state.range === 1) {
+    if (getRange === "1") {
       return time1
-    } else if (state.range === 2) {
+    } else if (getRange === "2") {
       return time2
-    } else if (state.range === 3) {
+    } else if (getRange === "3") {
       return time3
-    } else if (state.range === 4) {
+    } else if (getRange === "4") {
       return time4
     }
   }
@@ -31,15 +42,14 @@ function DropDura1({ state }) {
       type: "กรอ.",
     },
   ]
-  const [selectedValue1, setSelectedValue1] = useState(null)
+
   const handleChange1 = (obj) => {
-    setSelectedValue1(obj)
+
+    setTime(obj)
   }
 
-  const [selectedType, setSelectedType] = useState(null)
-
   const handleOnChange = (obj) => {
-    setSelectedType(obj)
+    setType(obj)
   }
 
   const handleSubmit = (e) => {
@@ -48,37 +58,29 @@ function DropDura1({ state }) {
     // window.location.reload()
     let id = localStorage.getItem("studentID")
 
-    if (selectedValue1 && selectedType) {
+    if (getType && getTime) {
       if (check) {
         const pushData = {
-          range: state.range,
-          timerange: state.time,
-          time: selectedValue1.time,
-          type: selectedType.type,
+          range: getRange,
+          timerange: getTimeRange,
+          time: getTime.time,
+          type: getType.type,
         }
         db.database().ref("Data").child(detail.id).update(pushData)
       } else {
-        SetDetail({
-          range: state.range,
-          timerange: state.time,
-          time: selectedValue1.time,
-          type: selectedType.type,
-          studentID: id,
-          // email: session.cerrentUser.email
-        })
         const pushData = {
-          range: state.range,
-          timerange: state.time,
-          time: selectedValue1.time,
-          type: selectedType.type,
+          range: getRange,
+          timerange: getTimeRange,
+          time: getTime.time,
+          type: getType.type,
           studentID: id,
           email: session.cerrentUser.email,
         }
-        console.log(pushData)
+        // console.log(pushData)
         db.database().ref(`Data`).push(pushData)
 
-        localStorage.setItem("time", selectedValue1.time)
-        localStorage.setItem("type", selectedType.type)
+        localStorage.setItem("time", getTime)
+        localStorage.setItem("type", getType)
       }
       history.push("/Detail")
     } else {
@@ -89,13 +91,13 @@ function DropDura1({ state }) {
   const handleClear = (e) => {
     e.preventDefault()
     console.log("test")
-    setSelectedType(null)
-    setSelectedValue1(null)
+    setType(null)
+    setTime(null)
   }
 
   return (
     <div>
-      <div className="dheader">{`ช่วงที่ ${state.range} เวลา ${state.time} น.`}</div>
+      <div className="dheader">{`ช่วงที่ ${getRange} เวลา ${getTimeRange} น.`}</div>
 
       <div className="rowDrop">
         <div class="row">
@@ -104,7 +106,7 @@ function DropDura1({ state }) {
               กรุณาเลือกเวลา<br></br>
               {/* {`${detail.timerange} น.`} */}
               <Select
-                value={selectedValue1}
+                value={getTime}
                 options={seletTime()}
                 onChange={handleChange1}
                 isOptionDisabled={(options) => options.isDisabled}
@@ -112,7 +114,7 @@ function DropDura1({ state }) {
                 required
               />
               <b>เวลาที่คุณเลือกคือ</b>
-              <pre>{JSON.stringify(selectedValue1, null, 2)}</pre>
+              <pre>{JSON.stringify(getTime, null, 2)}</pre>
             </div>
           </div>
 
@@ -121,14 +123,14 @@ function DropDura1({ state }) {
               <br></br>
               กรุณาเลือกประเภท
               <Select
-                value={selectedType}
+                value={getType}
                 options={type}
                 onChange={handleOnChange}
                 required
                 getOptionLabel={(options) => options.type}
               />
               <b>ประเภทที่คุณเลือกคือ</b>
-              <pre>{JSON.stringify(selectedType, null, 2)}</pre>
+              <pre>{JSON.stringify(getType, null, 2)}</pre>
             </div>
           </div>
           <div class="col-sm-3">

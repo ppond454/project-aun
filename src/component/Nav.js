@@ -7,11 +7,14 @@ import { useHistory } from "react-router-dom"
 import { contextSession } from "../App"
 
 export default function Nav() {
-  const { setSession, SetDetail  } = useContext(contextSession)
+
+  const { setSession, SetDetail } = useContext(contextSession)
+
   const history = useHistory()
   const handleLogOut = (e) => {
     e.preventDefault()
     auth.signOut().then(() => {
+      
       setSession({
         isLoggedIn: false,
         currentUser: null,
@@ -25,8 +28,10 @@ export default function Nav() {
         type: null,
         studentID: null,
       })
-
+      
+      
     })
+    
     sessionStorage.clear()
     localStorage.clear()
     history.push("/login")

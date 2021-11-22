@@ -15,6 +15,12 @@ const contextSession = createContext() // ศึกษาเรื่อง  use
 
 function App() {
   //const refreshPage = () => window.location.reload(false);
+  const [getStudentId, setStudentId] = useState(null)
+  const [getRange, setRange] = useState(null)
+  const [getTimeRange, setTimeRange] = useState(null)
+  const [getTime, setTime] = useState(null)
+  const [getType, setType] = useState(null)
+
   const [session, setSession] = useState({
     isLoggedIn: false,
     cerrentUser: null,
@@ -25,7 +31,7 @@ function App() {
   const [rawData, setRawData] = useState(null)
 
   const [detail, SetDetail] = useState({
-    range: 0,
+    range: null,
     email: null,
     id: null,
     timerange: null,
@@ -58,12 +64,11 @@ function App() {
               return val.email === user.email
             })
             const check = Object.keys(findUser).length !== 0 // เช็คว่าเคยลงทะเบียนหรือยัง?
-            if(check){
+            if (check) {
               setCheck(check)
               sessionStorage.setItem("check", true)
             }
-            
-            
+            // console.log(findUser);
 
             if (check) {
               SetDetail({
@@ -80,15 +85,33 @@ function App() {
       }
     })
   }, [])
-  
+
   return (
     <contextSession.Provider
-      value={{ setSession, session, SetDetail, detail, check, rawData }}
+      value={{
+        setSession,
+        session,
+        SetDetail,
+        detail,
+        check,
+        rawData,
+        getStudentId,
+        setStudentId,
+        getRange,
+        setRange,
+        getTimeRange,
+        setTimeRange,
+        getTime,
+        setTime,
+        getType,
+        setType,
+      }}
     >
       {/* เช็ค Login */}
       {session.isLoggedIn ? (
         <>
-          {sessionStorage.getItem("session") ? <Redirect to="/Detail" /> : <Redirect to="/Home" />}
+          {sessionStorage.getItem("session") && <Redirect to="/Home" />
+          }
           <Nav />
           <Route exact path="/Home" component={Home} />
           <Route path="/Queue" component={Queue} />

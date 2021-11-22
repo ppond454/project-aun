@@ -2,9 +2,9 @@ import React, { useState, useContext } from "react"
 import { useHistory } from "react-router-dom"
 import "../App.css"
 import { contextSession } from "../App"
-import { db } from "../config/firebase"
-function Student({ SetDetail }) {
-  const { rawData } = useContext(contextSession)
+
+function Student() {
+  const { rawData ,setStudentId } = useContext(contextSession)
   const history = useHistory()
   const [id, setId] = useState("")
   const handleOnChange = (e) => {
@@ -21,10 +21,11 @@ function Student({ SetDetail }) {
       const checkID = rawData.filter((val) => {
         return val.studentID === id
       })
-      console.log(checkID.length)
+    
 
       if (checkID.length === 0) {
         localStorage.setItem("studentID", id)
+        setStudentId(id)
         history.push("/Queue")
       } else {
         alert("รหัสนักศึกษานี้ลงทะเบียนเเล้ว ไม่สามารถลงซ้ำได้")

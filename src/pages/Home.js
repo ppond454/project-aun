@@ -7,8 +7,7 @@ import { Redirect } from "react-router-dom"
 export default function Home() {
   const { SetDetail, check } = useContext(contextSession)
 
-  console.log(check)
-  console.log(sessionStorage.getItem("session"))
+
   return (
     <div>
       {check ? (

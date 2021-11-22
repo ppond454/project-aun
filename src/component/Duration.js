@@ -1,24 +1,26 @@
+import  { useContext } from "react"
+import { contextSession } from "../App"
 
 import '../App.css';
 
-function Duration1({ setState }) {
+function Duration1() {
 
-   
+    const { setRange , setTimeRange } = useContext(contextSession)
     const range = [
         {
-            _range: 1,
+            _range: "1",
             _time: "09.00-10:30"
         },
         {
-            _range: 2,
+            _range: "2",
             _time: "10:30-12:00"
         },
         {
-            _range: 3,
+            _range: "3",
             _time: "13:00-14:30"
         },
         {
-            _range: 4,
+            _range: "4",
             _time: "14:30-16:00"
         },
 
@@ -44,11 +46,8 @@ function Duration1({ setState }) {
                                         margin: "10px"
                                     }}
                                     onClick={() => {
-                                        setState({
-                                            time: val._time,
-                                            range: val._range
-
-                                        })
+                                        setRange(val._range)
+                                        setTimeRange(val._time)
                                         localStorage.setItem("range", val._range)
                                         localStorage.setItem("timerange", val._time)
 

@@ -6,26 +6,22 @@ import { Redirect } from "react-router-dom"
 import { contextSession } from "../App"
 
 export default function Queue() {
-  const { check } = useContext(contextSession)
+  const { check ,getRange ,setRange } = useContext(contextSession)
 
-  const [state, setState] = useState({
-    time: null,
-    range: 0,
-  })
 
   return (
     <div>
       {!check && !localStorage.getItem("studentID") && <Redirect to="/Home"/> }
-      {state.range > 0 ? (
-        <DropDura1 state={state} />
+      {getRange ? (
+        <DropDura1 />
       ) : (
-        <Duration1 setState={setState} />
+        <Duration1  />
       )}
 
-      {state.range > 0 ? (
+      {getRange  ? (
         <button
           class="btn btn-outline-secondary"
-          onClick={() => setState({ range: 0 })}
+          onClick={() => setRange(null)}
         >
           ย้อนกลับ
         </button>

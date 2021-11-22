@@ -21,20 +21,7 @@ const Login = () => {
       // เช็คว่าได้กรอก email กับ password ?
       try {
         // console.log("login", Username, password)
-        const response = await auth.signInWithEmailAndPassword(
-          Username,
-          password
-        )
-
-        const { user } = response
-
-        setSession({
-          isLoggedIn: true,
-          currentUser: user,
-        })
-
-        
-        window.location.reload()
+        await auth.signInWithEmailAndPassword(Username, password)
         history.push("/Home") // เมื่อ login สำเร็จ redirectไปหน้า home
         
       } catch (error) {
