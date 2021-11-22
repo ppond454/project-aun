@@ -6,12 +6,12 @@ import { useHistory } from "react-router-dom"
 export default function Detail() {
   const history = useHistory()
 
-  const { detail, check } = useContext(contextSession)
+  const { detail, check} = useContext(contextSession)
 
-console.log(detail);
+  console.log(detail)
   return (
     <>
-      {!check && history.push("/Queue")}
+      {!check ? history.push("/Queue") : null }
       <div>
         <h1 className="p3"> รายละเอียดการจอง </h1>
         <div className="detail">

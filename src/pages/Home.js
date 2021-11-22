@@ -5,20 +5,17 @@ import "../App.css"
 import { Redirect } from "react-router-dom"
 
 export default function Home() {
-  const { SetDetail, check } = useContext(contextSession)
-
+  const { check } = useContext(contextSession)
+  console.log(check)
 
   return (
     <div>
       {check ? (
-        <>
-          <Redirect to="/Detail" />
-          <h3>...loading</h3>
-        </>
+        <Redirect to="/Detail" />
       ) : (
         <>
           {!sessionStorage.getItem("check") ? (
-            <Student SetDetail={SetDetail} />
+            <Student />
           ) : (
             <div align="center">
               <h>....loading</h>

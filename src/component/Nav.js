@@ -8,11 +8,12 @@ import { contextSession } from "../App"
 
 export default function Nav() {
 
-  const { setSession, SetDetail } = useContext(contextSession)
+  const { setSession, SetDetail , setCheck } = useContext(contextSession)
 
   const history = useHistory()
   const handleLogOut = (e) => {
     e.preventDefault()
+    
     auth.signOut().then(() => {
       
       setSession({
@@ -20,7 +21,7 @@ export default function Nav() {
         currentUser: null,
       })
       SetDetail({
-        range: 0,
+        range: null,
         email: null,
         id: null,
         timerange: null,
@@ -28,10 +29,9 @@ export default function Nav() {
         type: null,
         studentID: null,
       })
-      
-      
+      setCheck(false)
     })
-    
+   
     sessionStorage.clear()
     localStorage.clear()
     history.push("/login")

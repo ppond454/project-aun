@@ -6,7 +6,7 @@ import { auth } from "../config/firebase"
 import { contextSession } from "../App"
 
 const Login = () => {
-  const history = useHistory()
+
   const { setSession } = useContext(contextSession)
   // const [Username, setUsername] = useState("") //studentID
   // const [password, setPassword] = useState("") //password
@@ -20,10 +20,9 @@ const Login = () => {
     if (Username && password) {
       // เช็คว่าได้กรอก email กับ password ?
       try {
-        // console.log("login", Username, password)
+
         await auth.signInWithEmailAndPassword(Username, password)
-        history.push("/Home") // เมื่อ login สำเร็จ redirectไปหน้า home
-        
+        // history.push("/Home") // เมื่อ login สำเร็จ redirectไปหน้า home
       } catch (error) {
         setSession({
           isLoggedIn: false,

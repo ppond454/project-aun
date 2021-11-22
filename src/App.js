@@ -39,7 +39,7 @@ function App() {
     type: null,
     studentID: null,
   })
-
+console.log(detail);
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       // เช็คสถานะ login
@@ -94,6 +94,7 @@ function App() {
         SetDetail,
         detail,
         check,
+        setCheck,
         rawData,
         getStudentId,
         setStudentId,
@@ -110,7 +111,7 @@ function App() {
       {/* เช็ค Login */}
       {session.isLoggedIn ? (
         <>
-          {sessionStorage.getItem("session") && <Redirect to="/Home" />
+          {!sessionStorage.getItem("check") && <Redirect to="/Home" />
           }
           <Nav />
           <Route exact path="/Home" component={Home} />

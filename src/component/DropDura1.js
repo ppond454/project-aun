@@ -12,6 +12,7 @@ function DropDura1() {
     detail,
     session,
     check,
+    setCheck,
     getRange,
     getTimeRange,
     setTime,
@@ -78,6 +79,7 @@ function DropDura1() {
         }
         // console.log(pushData)
         db.database().ref(`Data`).push(pushData)
+        setCheck(false)
 
         localStorage.setItem("time", getTime)
         localStorage.setItem("type", getType)
