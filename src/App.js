@@ -6,21 +6,19 @@ import "./App.css"
 import Queue from "./pages/Queue"
 import { Route, Redirect } from "react-router-dom"
 import Home from "./pages/Home"
-import { auth, db } from "./config/firebase"
+import { auth,db } from "./config/firebase"
 import Detail from "./pages/Detail"
 import News from "./pages/News"
-import Nav from "./component/Nav"
+import Nav from './component/Nav';
 
 const contextSession = createContext() // ศึกษาเรื่อง  useContext
 
 function App() {
-  //const refreshPage = () => window.location.reload(false);
-  const [getStudentId, setStudentId] = useState(null)
+   const [getStudentId, setStudentId] = useState(null)
   const [getRange, setRange] = useState(null)
   const [getTimeRange, setTimeRange] = useState(null)
   const [getTime, setTime] = useState(null)
   const [getType, setType] = useState(null)
-
 
   const [session, setSession] = useState({
     isLoggedIn: false,
@@ -40,9 +38,8 @@ function App() {
     type: null,
     studentID: null,
   })
-
+console.log(detail);
   useEffect(() => {
-
     auth.onAuthStateChanged((user) => {
       // เช็คสถานะ login
       if (user) {
@@ -67,8 +64,8 @@ function App() {
             })
             const check = Object.keys(findUser).length !== 0 // เช็คว่าเคยลงทะเบียนหรือยัง?
             if (check) {
-              sessionStorage.setItem("check", true)
               setCheck(check)
+              sessionStorage.setItem("check", true)
             }
             // console.log(findUser);
 
@@ -84,7 +81,6 @@ function App() {
               })
             }
           })
-          
       }
     })
   }, [])

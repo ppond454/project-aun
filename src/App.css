@@ -91,14 +91,13 @@
   border: 0px;
   width: 100px;
   height: 100px;
-  background-image: linear-gradient(to top, #fff1eb 10%, #ace0f9 100%);
+  background-image: linear-gradient(to top, #004e8d 20%, #b6c1fd 100%);
   border: 2px;
-  border-radius: 15px
- 
- 
+  border-radius: 15px;
+ color: rgb(207, 206, 186);
 }
 .dura{
-margin: 0px 550px 150px 600px;
+align-items:center;
 }
 
 .topbox{
@@ -119,7 +118,7 @@ margin: 0px 550px 150px 600px;
   }
   .h2header{
     display: flex;
-    margin: 100px 550px 150px 600px;
+    align-items:center;
     height: 50;
     justify-content: center;
     align-items: center;
@@ -130,11 +129,17 @@ margin: 0px 550px 150px 600px;
 
 
 .Boxtodo {
-  background-color: #ffffff;
-  width: 500px;
-  border: 1px solid black;
-  padding: 50px;
-  margin:  150px 550px 500px 650px;
+  background-image: url('studentid.jpg');
+  width: 400px;
+ 
+  padding: 10px;
+ 
+  align-items:center;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+
  
 }
 .psulogo2{
@@ -167,13 +172,13 @@ margin: 0px 550px 150px 600px;
 
   margin-left: auto;
   margin-right: auto;
-  padding-left: 400px;
-  padding-right: 200px;
+  padding-left: 300px;
+  padding-right: 100px;
   padding-top: 50px;
 }
 .rowDrop{
   background-color: #ffffff;
-  width: 1500px;
+  width: 1300px;
   border: 0px solid black;
   padding: 10px;
   margin:  100px 50px 50px 200px;
@@ -208,10 +213,10 @@ margin: 0px 550px 150px 600px;
 }
 
 .p3 {
-  font-family: "Lucida Console", "Courier New", monospace;
-  font-size: 20px;
-  text-align: center;
-  margin:  100px 50px 50px 70px;
+  color: rgb(14, 11, 11);
+ text-align: center;
+ font-size: 30px;
+padding: 100px;
 }
 .bglog{
   background-color: #4F80C0;
@@ -219,4 +224,43 @@ margin: 0px 550px 150px 600px;
 .detail{
   padding: 40px 20px;
   text-align: center;
+}
+
+
+
+.btcr{
+  text-align: center;
+  margin: 30px;
+}
+
+
+body {
+
+background-image: url('bg2.jpg');
+background-position: center;
+background-size: cover;
+background-repeat: no-repeat;
+width: 100vw;
+height: 100vh;
+-webkit-background-size: cover;
+  background-size: cover;
+
+
+}
+.detailbox {
+  background-image: url('de2.jpg');
+  width: 500px;
+  height: 500px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: rgb(14, 11, 11);
+  font-size: 20px;
+}
+.drop{
+  width: 200px;
+}
+.middlede {
+  text-align: center;
+  padding: 200px;
 }

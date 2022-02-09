@@ -1,5 +1,12 @@
 .ul-nav{
     display: inline-flex;
+    background-color: rgb(255,255,255);
+    width: 2000px;
+    height: 30px;
+    border: 0px ;
+    margin: 0px;
+    border: 2px;
+    border-radius: 10px
 }
 .li-nav{
     padding: 5px;
@@ -7,13 +14,13 @@
 .btLogout{
     float: right;
     cursor: default;
-    background-color: buttonface;
+    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);;
     box-sizing: border-box;
     margin: 0em;
-    font: 400 11px system-ui;
+    font: 400 13px system-ui;
     padding: 1px 7px 2px;
-    border-width: 1px;
+    border-width: 0px;
     border-style: solid;
-    border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
+    border-color: rgb(216, 216, 216) ;
     border-image: initial;
 }

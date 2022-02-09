@@ -1,15 +1,14 @@
-import React, { useState, useContext } from "react"
-import Select from "react-select"
-import "../App.css"
-import { db } from "../config/firebase"
-import { useHistory } from "react-router-dom"
+import React, { useState, useContext } from "react";
+import Select from "react-select";
+import '../App.css'
 
-import { time1, time2, time3, time4 } from "../dataTime/index"
+import { db } from "../config/firebase"
+import { time1, time2, time3, time4 } from '../dataTime/index';
+import { useHistory } from "react-router-dom"
 import { contextSession } from "../App"
 
-function DropDura1() {
-  const {
-    detail,
+function DropDura1({ state }) {
+  const { detail,
     session,
     check,
     setCheck,
@@ -18,9 +17,7 @@ function DropDura1() {
     setTime,
     setType,
     getTime,
-    getType,
-  } = useContext(contextSession)
-
+    getType, } = useContext(contextSession)
   const history = useHistory()
 
   const seletTime = () => {
@@ -32,7 +29,8 @@ function DropDura1() {
       return time3
     } else if (getRange === "4") {
       return time4
-    }
+    } 
+
   }
 
   const type = [
@@ -43,13 +41,15 @@ function DropDura1() {
       type: "กรอ.",
     },
   ]
-
   const handleChange1 = (obj) => {
+    setTime(obj)
+  }
+  const handleChange2 = (obj) => {
     setTime(obj)
   }
 
   const handleOnChange = (obj) => {
-    setType(obj)
+     setType(obj)
   }
 
   const handleSubmit = (e) => {
@@ -61,12 +61,15 @@ function DropDura1() {
     if (getType && getTime) {
       if (check) {
         const pushData = {
+          studentID: id,
           range: getRange,
           timerange: getTimeRange,
           time: getTime.time,
           type: getType.type,
+          email: session.cerrentUser.email,
         }
-        db.database().ref("Data").child(detail.id).update(pushData)
+        db.database().ref("Data").child(detail.id).remove()
+        db.database().ref(`Data`).push(pushData)
       } else {
         const pushData = {
           range: getRange,
@@ -78,8 +81,9 @@ function DropDura1() {
         }
         // console.log(pushData)
         db.database().ref(`Data`).push(pushData)
-
+       
         setCheck(true)
+
         localStorage.setItem("time", getTime)
         localStorage.setItem("type", getType)
       }
@@ -95,56 +99,59 @@ function DropDura1() {
     setType(null)
     setTime(null)
   }
-
   return (
-    <div>
-      <div className="dheader">{`ช่วงที่ ${getRange} เวลา ${getTimeRange} น.`}</div>
-
-      <div className="rowDrop">
+   
+<center>
+   <div>
+      <div className="p3">{`ช่วงที่ ${getRange} เวลา ${getTimeRange} น.`}</div> 
+      <div >
         <div class="row">
           <div class="col-sm-3">
-            <div className="App" className="Drop1">
+            <div className="drop" >
               กรุณาเลือกเวลา<br></br>
               {/* {`${detail.timerange} น.`} */}
-              <Select
-                value={getTime}
+              <Select 
+                 value={getTime}
                 options={seletTime()}
                 onChange={handleChange1}
                 isOptionDisabled={(options) => options.isDisabled}
                 getOptionLabel={(options) => options.time}
                 required
+                
               />
-              <b>เวลาที่คุณเลือกคือ</b>
-              <pre>{JSON.stringify(getTime, null, 2)}</pre>
+              
             </div>
           </div>
 
+
+
           <div class="col-sm-3">
-            <div className="App" className="Drop2">
+            <div className="drop" >
               <br></br>
               กรุณาเลือกประเภท
               <Select
-                value={getType}
+               value={getType}
                 options={type}
                 onChange={handleOnChange}
                 required
                 getOptionLabel={(options) => options.type}
               />
-              <b>ประเภทที่คุณเลือกคือ</b>
-              <pre>{JSON.stringify(getType, null, 2)}</pre>
+             
             </div>
           </div>
-          <div class="col-sm-3">
-            <button class="btn btn-success" onClick={handleSubmit}>
+          <div className="btcr">
+            <button class="btn btn-success" style={{padding: "8px"}} onClick={handleSubmit}>
               ยืนยัน
             </button>
-            <button type="reset" class="btn btn-danger" onClick={handleClear}>
+            <button type="reset" class="btn btn-danger"style={{margin: "100px"}} onClick={handleClear}>
               ล้าง
             </button>
           </div>
         </div>
       </div>
     </div>
+</center>
+     
   )
 }
 export default DropDura1

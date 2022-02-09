@@ -1,13 +1,16 @@
-import  { useContext } from "react"
-import { contextSession } from "../App"
+import { useContext } from 'react';
 
 import '../App.css';
+import { contextSession } from '../App';
 
-function Duration1() {
 
-    const { setRange , setTimeRange } = useContext(contextSession)
+
+function Duration1( ) {
+      const { setRange , setTimeRange } = useContext(contextSession)
+
+   
     const range = [
-        {
+       {
             _range: "1",
             _time: "09.00-10:30"
         },
@@ -25,6 +28,8 @@ function Duration1() {
         },
 
     ]
+  
+
 
 
     return (
@@ -32,9 +37,9 @@ function Duration1() {
         <div  >
             
 
-            <h2 className="h2header" >กรุณาเลือกช่วงเวลา</h2>
+            <h2 className="p3"  >กรุณาเลือกช่วงเวลา</h2>
             <br></br><br></br>
-            <div className="dura">
+            <div className="dura" style={{textAlign:"center"}}>
                 <div style={{ display: "inline-flex" }}  >
                     {
                         range.map((val, i) => (
@@ -43,7 +48,7 @@ function Duration1() {
                                     type="button"
                                     class="btn btn-outline-info"
                                     style={{
-                                        margin: "10px"
+                                        margin: "20px" 
                                     }}
                                     onClick={() => {
                                         setRange(val._range)

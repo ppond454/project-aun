@@ -1,16 +1,15 @@
 import React, { useContext, useRef } from "react"
-//import auth from 'firebase';
-import { useHistory } from "react-router-dom"
+
 import "../App.css"
 import { auth } from "../config/firebase"
 import { contextSession } from "../App"
+import { useHistory } from "react-router-dom"
 
 const Login = () => {
-
+  
   const { setSession } = useContext(contextSession)
-  // const [Username, setUsername] = useState("") //studentID
-  // const [password, setPassword] = useState("") //password
-  const userRef = useRef() // ใช้ useRef แทน useState ***ศึกษาเรื่อง useRef
+ 
+  const userRef = useRef() 
   const pwRef = useRef()
 
   const handleLogin = async () => {
@@ -18,11 +17,11 @@ const Login = () => {
     const password = pwRef.current.value
 
     if (Username && password) {
-      // เช็คว่าได้กรอก email กับ password ?
+      // เช็คกรอก email กับ password ?
       try {
-
+        
         await auth.signInWithEmailAndPassword(Username, password)
-      
+        // history.push("/Home") // เมื่อ login สำเร็จ redirectไปหน้า home
       } catch (error) {
         setSession({
           isLoggedIn: false,
@@ -36,21 +35,18 @@ const Login = () => {
     }
   }
 
-  // const handleUsername = (Event) => {
-  //   setUsername(Event.target.value)
-  // } //studentID
-  // const handlePassword = (Event) => {
-  //   setPassword(Event.target.value)
-  // } //password
-
   return (
-    <div>
-      <div>
-        <img src="estudent.jpg" alt="logo" width="200px"></img>{" "}
-      </div>
+   <div>
+      
       <center>
         <div>
           <h1 className="h1">
+        
+            
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             &emsp;&emsp;ระบบจองคิวสำหรับกองทุนกู้ยืมกยศ./กรอ.
           </h1>
         </div>
@@ -87,7 +83,9 @@ const Login = () => {
           >
             Login
           </button>
+          
         </div>
+       
       </center>
     </div>
   )
