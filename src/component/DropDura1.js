@@ -61,7 +61,7 @@ function DropDura1({ state }) {
     if (getType && getTime) {
       if (check) {
         const pushData = {
-          studentID: id,
+          studentID: detail.studentID,
           range: getRange,
           timerange: getTimeRange,
           time: getTime.time,
@@ -69,7 +69,7 @@ function DropDura1({ state }) {
           email: session.cerrentUser.email,
         }
         db.database().ref("Data").child(detail.id).remove()
-        db.database().ref(`Data`).push(pushData)
+        db.database().ref("Data").push(pushData)
       } else {
         const pushData = {
           range: getRange,
