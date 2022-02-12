@@ -11,11 +11,9 @@ export default function Queue() {
 
     return (
         <div>
-           {!check && !localStorage.getItem("studentID") && <><Redirect to="/Home"/> </>  }
-           
-
+           {!check && !localStorage.getItem("studentID") && <Redirect to="/Home"/> }
       {getRange ? (
-        <DropDura1 />
+        <DropDura1/>
       ) : (
         <Duration1  />
       )}

@@ -21,7 +21,6 @@ const Login = () => {
       try {
         
         await auth.signInWithEmailAndPassword(Username, password)
-        window.location.reload()
         // history.push("/Home") // เมื่อ login สำเร็จ redirectไปหน้า home
       } catch (error) {
         setSession({

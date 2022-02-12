@@ -25,6 +25,9 @@ function App() {
     cerrentUser: null,
     errorMessage: null,
   })
+console.log("time:",getTime)
+console.log("timeRange:",getTimeRange)
+
 
   const [check, setCheck] = useState(false)
   const [rawData, setRawData] = useState(null)
@@ -38,7 +41,7 @@ function App() {
     type: null,
     studentID: null,
   })
-console.log(detail);
+// console.log(detail);
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       // เช็คสถานะ login

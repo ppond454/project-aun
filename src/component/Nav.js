@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom"
 import { contextSession } from "../App"
 
 export default function Nav() {
-  const { setSession, SetDetail, setCheck   } = useContext(contextSession)
+  const { setSession, SetDetail, setCheck ,setRange ,setTime ,setType   } = useContext(contextSession)
   const history = useHistory()
   const handleLogOut = (e) => {
     e.preventDefault()
@@ -25,6 +25,9 @@ export default function Nav() {
         studentID: null,
       })
         setCheck(false)
+        setRange(null)
+        setTime(null)
+        setType(null)
     })
      sessionStorage.clear()
     localStorage.clear()
