@@ -11,12 +11,11 @@ import "../App.css"
 export default function Queue() {
   const onSelectDate = (value) => {
     setSelectedDate(value.format("YYYY-MM-DD"))
-    localStorage.setItem("date",value.format("YYYY-MM-DD"))
-    
+    localStorage.setItem("date", value.format("YYYY-MM-DD"))
   }
   const { check, getRange, setRange, setSelectedDate, selectedDate, detail } =
     useContext(contextSession)
- 
+
   return (
     <div>
       {!check && !localStorage.getItem("studentID") && <Redirect to="/Home" />}
@@ -26,12 +25,19 @@ export default function Queue() {
         // <Duration1  />
         <div className="calendar">
           กรุณาเลือกวันจองส่งเอกสาร<br></br>
-
-          <Calendar
-            onSelect={onSelectDate}
-            value={moment(detail.date) }
-            validRange={[moment("2022-02-16"), moment("2022-02-23")]}
-          />
+          {detail.date && (
+            <Calendar
+              onSelect={onSelectDate}
+              value={moment(detail.date)}
+              validRange={[moment("2022-02-16"), moment("2022-02-23")]}
+            />
+          )}
+          {!detail.date && (
+            <Calendar
+              onSelect={onSelectDate}
+              validRange={[moment("2022-02-16"), moment("2022-02-23")]}
+            />
+          )}
         </div>
       )}
 
