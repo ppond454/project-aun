@@ -91,7 +91,16 @@
   border: 0px;
   width: 100px;
   height: 100px;
-  background-image: linear-gradient(to top, #004e8d 20%, #b6c1fd 100%);
+  background-image: linear-gradient(to top, #1c649e 20%, #dce2ff 100%);
+  border: 2px;
+  border-radius: 15px;
+ color: rgb(36, 36, 35);
+}
+.buttonDate{
+  border: 0px;
+  width: 100px;
+  height: 100px;
+  background-image: linear-gradient(to top, #76aad4 20%, #b6c1fd 100%);
   border: 2px;
   border-radius: 15px;
  color: rgb(207, 206, 186);
@@ -166,15 +175,11 @@ align-items:center;
 
 .d1d1-grid{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr ;
   column-gap: 16px;
   row-gap: 16px;
+  margin: 50px;
 
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 300px;
-  padding-right: 100px;
-  padding-top: 50px;
 }
 .rowDrop{
   background-color: #ffffff;
@@ -216,7 +221,7 @@ align-items:center;
   color: rgb(14, 11, 11);
  text-align: center;
  font-size: 30px;
-padding: 100px;
+padding: 50px;
 }
 .bglog{
   background-color: #4F80C0;
@@ -229,8 +234,12 @@ padding: 100px;
 
 
 .btcr{
-  text-align: center;
-  margin: 30px;
+ 
+  position: absolute;
+  border-radius: 20px;
+   top: 370px;
+  right: 300px;
+  padding: 0px;
 }
 
 
@@ -241,7 +250,7 @@ background-position: center;
 background-size: cover;
 background-repeat: no-repeat;
 width: 100vw;
-height: 100vh;
+height: 125vh;
 -webkit-background-size: cover;
   background-size: cover;
 
@@ -263,4 +272,30 @@ height: 100vh;
 .middlede {
   text-align: center;
   padding: 200px;
+}
+
+
+.type{
+  position: absolute;
+  top: 280px;
+  right: 400px;
+  padding: 0px;
+  width: 200px;
+} 
+.back{
+  position: absolute;
+  top: 550px;
+  right: 50px;
+  padding: 0px;
+}
+h3{
+  color: rgb(27, 27, 27);
+  font-size: 20px;
+}
+
+.calendar{
+  margin: auto;
+  width: 50%;
+  border: 3px solid rgb(46, 119, 179);
+  padding: 10px;
 }

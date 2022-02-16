@@ -11,7 +11,7 @@ import Detail from "./pages/Detail"
 import News from "./pages/News"
 import Nav from './component/Nav';
 
-const contextSession = createContext() // ศึกษาเรื่อง  useContext
+const contextSession = createContext() 
 
 function App() {
    const [getStudentId, setStudentId] = useState(null)
@@ -19,15 +19,14 @@ function App() {
   const [getTimeRange, setTimeRange] = useState(null)
   const [getTime, setTime] = useState(null)
   const [getType, setType] = useState(null)
+  const [selectedDate, setSelectedDate] = useState(null)
+
 
   const [session, setSession] = useState({
     isLoggedIn: false,
     cerrentUser: null,
     errorMessage: null,
   })
-console.log("time:",getTime)
-console.log("timeRange:",getTimeRange)
-
 
   const [check, setCheck] = useState(false)
   const [rawData, setRawData] = useState(null)
@@ -36,6 +35,7 @@ console.log("timeRange:",getTimeRange)
     range: null,
     email: null,
     id: null,
+    date: null,
     timerange: null,
     time: null,
     type: null,
@@ -81,6 +81,7 @@ console.log("timeRange:",getTimeRange)
                 type: findUser[0].type,
                 studentID: findUser[0].studentID,
                 email: findUser[0].email,
+                date: findUser[0].date,
               })
             }
           })
@@ -108,6 +109,8 @@ console.log("timeRange:",getTimeRange)
         setTime,
         getType,
         setType,
+        selectedDate,
+        setSelectedDate,
       }}
     >
       {/* เช็ค Login */}
