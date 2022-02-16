@@ -16,6 +16,10 @@ export default function Queue() {
   const { check, getRange, setRange, setSelectedDate, selectedDate, detail } =
     useContext(contextSession)
 
+  let value
+  if (detail.date) value = moment(detail.date)
+  else value= moment()
+
   return (
     <div>
       {!check && !localStorage.getItem("studentID") && <Redirect to="/Home" />}
@@ -25,19 +29,13 @@ export default function Queue() {
         // <Duration1  />
         <div className="calendar">
           กรุณาเลือกวันจองส่งเอกสาร<br></br>
-          {detail.date && (
-            <Calendar
-              onSelect={onSelectDate}
-              value={moment(detail.date)}
-              validRange={[moment("2022-02-16"), moment("2022-02-23")]}
-            />
-          )}
-          {!detail.date && (
-            <Calendar
-              onSelect={onSelectDate}
-              validRange={[moment("2022-02-16"), moment("2022-02-23")]}
-            />
-          )}
+          (
+          <Calendar
+            onSelect={onSelectDate}
+            value={value}
+            validRange={[moment("2022-02-16"), moment("2022-02-23")]}
+          />
+          )
         </div>
       )}
 
