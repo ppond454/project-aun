@@ -29,13 +29,13 @@ export default function Queue() {
         // <Duration1  />
         <div className="calendar">
           กรุณาเลือกวันจองส่งเอกสาร<br></br>
-          (
+          
           <Calendar
             onSelect={onSelectDate}
             value={value}
-            validRange={[moment("2022-02-16"), moment("2022-02-23")]}
+            validRange={[moment("2022-04-02"), moment("2022-04-04")]}
           />
-          )
+          
         </div>
       )}
 

@@ -6,6 +6,7 @@ import { db } from "../config/firebase"
 import { time1, time2, time3, time4 } from "../dataTime/index"
 import { useHistory } from "react-router-dom"
 import { contextSession } from "../App"
+import { checkTime } from "../dataTime/checkTime"
 
 function DropDura1({ state }) {
   const {
@@ -34,6 +35,12 @@ function DropDura1({ state }) {
       return time4
     }
   }
+  const getStudentID=()=>{
+    if(detail.studentID){
+      return detail.studentID
+    }
+    return localStorage.getItem("studentID")
+  }
 
   const type = [
     {
@@ -59,7 +66,7 @@ function DropDura1({ state }) {
         const pushData = {
           studentID: detail.studentID,
           range: getRange,
-          date:selectedDate, 
+          date: selectedDate,
           timerange: getTimeRange,
           time: getTime,
           type: getType.type,
@@ -111,6 +118,7 @@ function DropDura1({ state }) {
       <center>
         <h3>กรุณาเลือกเวลาและประเภทของทุนกู้ยืม </h3>{" "}
       </center>
+
       <div
         style={{
           justifyContent: "center",
@@ -125,9 +133,16 @@ function DropDura1({ state }) {
         }}
       >
         {seletTime().map((val) => {
+          let condition = checkTime(selectedDate, val.time, getStudentID())
           return (
-            <div key={val.key}>
+            <div key={val.number} style={{
+              cursor: condition && "not-allowed"
+            }}>
               <button
+              style={{
+                pointerEvents: condition && 'none'
+              }}
+                disabled={condition}
                 type="button"
                 onClick={() => {
                   setTime(val.time)

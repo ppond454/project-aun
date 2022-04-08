@@ -5,6 +5,7 @@ import { auth } from "../config/firebase"
 import { useHistory } from "react-router-dom"
 import { contextSession } from "../App"
 
+
 export default function Nav() {
   const { setSession,setSelectedDate,SetDetail, setCheck, setRange, setTime, setType } =
     useContext(contextSession)
@@ -66,7 +67,7 @@ export default function Nav() {
 
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
-          <button onClick={handleLogOut}>Logout</button>
+          <button onClick={handleLogOut} className="btLogout">Logout</button>
         </div>
       </nav>
     </div>

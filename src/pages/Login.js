@@ -1,6 +1,7 @@
 import React, { useContext, useRef } from "react"
 
 import "../App.css"
+import Fire_store from "../config/Fire_store"
 import { auth } from "../config/firebase"
 import { contextSession } from "../App"
 import { useHistory } from "react-router-dom"
@@ -37,6 +38,7 @@ const Login = () => {
 
   return (
    <div>
+      {/* <Fire_store/> */}
       
       <center>
         <div>
@@ -78,7 +80,7 @@ const Login = () => {
           <button
             type="button"
             class="button:hover"
-            class="button"
+            //class="button"
             onClick={handleLogin}
           >
             Login

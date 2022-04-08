@@ -30,8 +30,10 @@ function Duration1() {
       <h2 className="p3">กรุณาเลือกช่วงเวลา</h2>
       <p
         style={{
+        
           backgroundColor: "#4F7D9B",
           textAlign: "center",
+       
           color: "white",
         }}
       >
@@ -47,7 +49,7 @@ function Duration1() {
                 type="button"
                 class="btn btn-outline-info"
                 style={{
-                  margin: "20px",
+                  margin: "30px",
                 }}
                 onClick={() => {
                   setRange(val._range)
@@ -55,15 +57,12 @@ function Duration1() {
                   localStorage.setItem("range", val._range)
                   localStorage.setItem("timerange", val._time)
                 }}
-                className="buttonD1"
+                className="buttonD1" 
               >{`ช่วงที่ ${val._range} ${val._time}`}</button>
             </div>
           ))}
         </div>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
+      
       </div>
     </div>
   )
