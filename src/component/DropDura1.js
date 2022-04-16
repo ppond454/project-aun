@@ -59,7 +59,7 @@ function DropDura1({ state }) {
     e.preventDefault()
     // console.log("test");
     // window.location.reload()
-    let id = localStorage.getItem("studentID")
+    // let id = localStorage.getItem("studentID")
 
     if (getType && getTime) {
       if (check) {
@@ -81,7 +81,7 @@ function DropDura1({ state }) {
           date: selectedDate,
           time: getTime,
           type: getType.type,
-          studentID: id,
+          studentID: session.cerrentUser.email.slice(0,10),
           email: session.cerrentUser.email,
         }
         // console.log(pushData)

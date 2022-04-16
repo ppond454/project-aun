@@ -4,12 +4,12 @@ import "../App.css"
 import Fire_store from "../config/Fire_store"
 import { auth } from "../config/firebase"
 import { contextSession } from "../App"
-import { useHistory } from "react-router-dom"
+import { useHistory  } from "react-router-dom"
 import { Button } from 'antd'
 const Login = () => {
   
   const { setSession } = useContext(contextSession)
- 
+ const history = useHistory()
   const userRef = useRef() 
   const pwRef = useRef()
 
@@ -85,10 +85,8 @@ const Login = () => {
           >
             Login
           </button>
-          
-          
-        </div>
-       
+          <a href="/register" >Register</a>
+        </div>       
       </center>
     </div>
   )

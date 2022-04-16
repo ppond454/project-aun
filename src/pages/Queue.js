@@ -22,7 +22,7 @@ export default function Queue() {
 
   return (
     <div>
-      {!check && !localStorage.getItem("studentID") && <Redirect to="/Home" />}
+      {/* {!check && !localStorage.getItem("studentID") && <Redirect to="/Home" />} */}
       {selectedDate ? (
         <>{getRange ? <DropDura1 /> : <Duration1 />} </>
       ) : (
