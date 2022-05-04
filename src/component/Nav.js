@@ -5,10 +5,17 @@ import { auth } from "../config/firebase"
 import { useHistory } from "react-router-dom"
 import { contextSession } from "../App"
 
-
 export default function Nav() {
-  const { setSession,setSelectedDate,SetDetail, setCheck, setRange, setTime, setType } =
-    useContext(contextSession)
+  const {
+    setSession,
+    setSelectedDate,
+    SetDetail,
+    setCheck,
+    setRange,
+    setTime,
+    setType,
+    session,
+  } = useContext(contextSession)
   const history = useHistory()
   const handleLogOut = (e) => {
     e.preventDefault()
@@ -16,6 +23,8 @@ export default function Nav() {
       setSession({
         isLoggedIn: false,
         currentUser: null,
+        errorMessage: null,
+        role: null,
       })
       SetDetail({
         range: null,
@@ -41,33 +50,37 @@ export default function Nav() {
     <div>
       <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container-fluid">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <a class="nav-link active" href="/Home">
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a class="nav-link active" href="/Queue">
-                Queue
-              </a>
-            </li>
-            <li className="nav-item">
-              <a class="nav-link active" href="/Detail">
-                Detail
-              </a>
-            </li>
+          {session.role === "user" && (
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <a class="nav-link active" href="/Home">
+                  Home
+                </a>
+              </li>
+              <li className="nav-item">
+                <a class="nav-link active" href="/Queue">
+                  Queue
+                </a>
+              </li>
+              <li className="nav-item">
+                <a class="nav-link active" href="/Detail">
+                  Detail
+                </a>
+              </li>
 
-            <li className="nav-item">
-              <a class="nav-link active" href="/News">
-                News
-              </a>
-            </li>
-          </ul>
+              <li className="nav-item">
+                <a class="nav-link active" href="/News">
+                  News
+                </a>
+              </li>
+            </ul>
+          )}
 
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
-          <button onClick={handleLogOut} className="btLogout">Logout</button>
+          <button onClick={handleLogOut} className="btLogout">
+            Logout
+          </button>
         </div>
       </nav>
     </div>

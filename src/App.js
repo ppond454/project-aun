@@ -11,6 +11,8 @@ import Detail from "./pages/Detail"
 import News from "./pages/News"
 import Nav from "./component/Nav"
 import Register from "./pages/Register"
+import Admin from "./pages/Admin"
+import { ValidateEmail } from "./pages/Register"
 const contextSession = createContext()
 
 function App() {
@@ -26,6 +28,7 @@ function App() {
     isLoggedIn: false,
     cerrentUser: null,
     errorMessage: null,
+    role: null,
   })
 
   const [check, setCheck] = useState(false)
@@ -44,48 +47,61 @@ function App() {
   // console.log(detail);
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      // เช็คสถานะ login
       if (user) {
-        setSession({
-          isLoggedIn: true,
-          cerrentUser: user,
-          errorMessage: null,
-        })
-        // console.log(user)
-        sessionStorage.setItem("session", true)
-        db.database()
-          .ref(`Data`)
-          .on("value", (snap) => {
-            let emailList = []
-            let data = snap.val()
-            for (let id in data) {
-              emailList.push({ id, ...data[id] })
-            }
-            // console.log(emailList);
-            setRawData(emailList)
-            const findUser = emailList.filter((val) => {
-              return val.email === user.email
-            })
-            const check = Object.keys(findUser).length !== 0 // เช็คว่าเคยลงทะเบียนหรือยัง?
-            if (check) {
-              setCheck(check)
-              sessionStorage.setItem("check", true)
-            }
-            // console.log(findUser);
-
-            if (check) {
-              SetDetail({
-                id: findUser[0].id,
-                range: findUser[0].range,
-                timerange: findUser[0].timerange,
-                time: findUser[0].time,
-                type: findUser[0].type,
-                studentID: findUser[0].studentID,
-                email: findUser[0].email,
-                date: findUser[0].date,
-              })
-            }
+        console.log(!ValidateEmail(user.email))
+        if (!ValidateEmail(user.email)) {
+          setSession({
+            isLoggedIn: true,
+            cerrentUser: user,
+            errorMessage: null,
+            role: "admin",
           })
+          sessionStorage.setItem("session", true)
+        } else {
+          setSession({
+            isLoggedIn: true,
+            cerrentUser: user,
+            errorMessage: null,
+            role: "user",
+          })
+
+          // console.log(user)
+          sessionStorage.setItem("session", true)
+
+          db.database()
+            .ref(`Data`)
+            .on("value", (snap) => {
+              let emailList = []
+              let data = snap.val()
+              for (let id in data) {
+                emailList.push({ id, ...data[id] })
+              }
+              // console.log(emailList);
+              setRawData(emailList)
+              const findUser = emailList.filter((val) => {
+                return val.email === user.email
+              })
+              const check = Object.keys(findUser).length !== 0
+              if (check) {
+                setCheck(check)
+                sessionStorage.setItem("check", true)
+              }
+              // console.log(findUser);
+
+              if (check) {
+                SetDetail({
+                  id: findUser[0].id,
+                  range: findUser[0].range,
+                  timerange: findUser[0].timerange,
+                  time: findUser[0].time,
+                  type: findUser[0].type,
+                  studentID: findUser[0].studentID,
+                  email: findUser[0].email,
+                  date: findUser[0].date,
+                })
+              }
+            })
+        }
       }
     })
   }, [])
@@ -114,26 +130,37 @@ function App() {
         setSelectedDate,
       }}
     >
-      {/* เช็ค Login */}
       {session.isLoggedIn ? (
         <>
-          {!sessionStorage.getItem("check") && <Redirect to="/Home" />}
-          <Nav />
-          <Route exact path="/Home" component={Home} />
-          <Route path="/Queue" component={Queue} />
-          <Route path="/Detail" component={Detail} />
-          <Route path="/News" component={News} />
+          {session.role === "user" && (
+            <>
+              {!sessionStorage.getItem("check") && <Redirect to="/Home" />}
+              <Nav />
+              <Route exact path="/Home" component={Home} />
+              <Route path="/Queue" component={Queue} />
+              <Route path="/Detail" component={Detail} />
+              <Route path="/News" component={News} />
+            </>
+          )}
+          {session.role === "admin" && (
+            <>
+              <Nav />
+              <Route exact path="/admin" component={Admin} />
+              <Redirect to="/admin" />
+            </>
+          )}
         </>
       ) : (
         <>
           {!sessionStorage.getItem("session") ? (
             <>
-              {location.pathname === "/register" ? null: <Redirect to="/login" /> }
+              {location.pathname === "/register" ? null : (
+                <Redirect to="/login" />
+              )}
               <Route path="/login" component={Login} />
-              <Route path="/" component={Register} />
+              <Route path="/register" component={Register} />
             </>
           ) : (
-            // โหลดตอน refresh หน้าเว็บ
             <h1 style={{ color: "blueviolet", textAlign: "center" }}>
               ...loading
             </h1>

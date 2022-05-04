@@ -1,10 +1,10 @@
 import React, { useState } from "react"
 import firebase, {auth} from "../config/firebase"
 
-const ValidateEmail = (email) => {
-  if (email.length !== 20) return false
+export const ValidateEmail = (email) => {
+  if (email.length !== 27) return false
   let checkDomain = email.slice(10)
-  if (checkDomain !== "@psu.ac.th") return false
+  if (checkDomain !== "@phuket.psu.ac.th") return false
   let checkID = /^-?\d+$/.test(email.slice(0, 10))
   if (!checkID) return false
 
@@ -20,12 +20,24 @@ const Register = () => {
   const [validateConPwd, setValidateConPwd] = useState(false)
 
   return (
-    <div className="Box">
+       <div><center>
+    <div>
+      <h1 className="h1">
+    
+        
+        <br></br>
+        <br></br>
+        &emsp;&emsp;ระบบจองคิวสำหรับกองทุนกู้ยืมกยศ./กรอ.
+      </h1>
+    </div>
+  </center>
+          <center>
+          <div className="Box">
    
         <h3>Register</h3>
 
         <div className="form-group">
-          <label>PSU Gmail</label>
+          <label>Gmail phuket.psu.ac.th</label>
           <input
             style={{
               background: validateEmail && "#98FB98",
@@ -33,7 +45,7 @@ const Register = () => {
             required
             type="email"
             className="form-control"
-            placeholder="64xxxxxxx@psu.ac.th"
+            placeholder="64xxxxxxx@phuket.psu.ac.th"
             value={email}
             onChange={(e) => {
               setEmail(e.target.value)
@@ -42,6 +54,9 @@ const Register = () => {
             }}
           />
         </div>
+
+
+        
         <div className="form-group">
           <label>Password</label>
           <input
@@ -101,6 +116,13 @@ const Register = () => {
         </button>
   
     </div>
+      </center>
+    
+           </div>
+    
+       
+   
+      
   )
 }
 

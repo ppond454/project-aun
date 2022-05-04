@@ -18,11 +18,9 @@ const Login = () => {
     const password = pwRef.current.value
 
     if (Username && password) {
-      // เช็คกรอก email กับ password ?
+      
       try {
-        
         await auth.signInWithEmailAndPassword(Username, password)
-        // history.push("/Home") // เมื่อ login สำเร็จ redirectไปหน้า home
       } catch (error) {
         setSession({
           isLoggedIn: false,
@@ -61,11 +59,12 @@ const Login = () => {
           </header>
           <br></br>
           <input
-            type="Email"
-            placeholder="Your E-mail"
+            type="email"
+            placeholder="64xxxxxxx@phuket.psu.ac.th"
             class="holder"
             // onChange={handleUsername}
             ref={userRef}
+            style={{borderRadius: "10px",border: "0px"}}
           />
           <p></p>
           <input
@@ -74,18 +73,25 @@ const Login = () => {
             class="holder"
             ref={pwRef}
             // onChange={handlePassword}
+            style={{borderRadius: "10px",border: "0px"}}
           />
           <br></br>
           <br></br>
           <button
-            type="button"
-            class="button:hover"
+           type="button"
+           class="btn btn-outline-dark"
             //class="button"
             onClick={handleLogin}
           >
             Login
+          </button >
+
+          <br></br><br></br>
+          <button  type="button"
+            class="btn btn-outline-dark" >
+            <a href="/register" >Register</a>
           </button>
-          <a href="/register" >Register</a>
+          
         </div>       
       </center>
     </div>

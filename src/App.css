@@ -39,12 +39,13 @@
   }
 }
 .Box {
-  background-color: #ffffff;
+  background-color: #acd1ec;
   width: 600px;
-  border: 1px solid black;
+  border: 0px solid black;
   padding: 100px;
   margin:  20px 50px 400px 100px;
- 
+  border-radius:10px;
+  box-shadow: 2px 2px 2px 2px hsl(216, 63%, 70%);
 }
 .button{
   background-image: linear-gradient(-225deg, #7DE2FC 0%, #B9B6E5 100%);
@@ -83,6 +84,8 @@
    
   font-size: calc(10px + 3.0vmin);
   font-weight: bold;
+  color: rgb(17, 15, 15);
+  text-shadow: 2px 2px 4px hsl(215, 92%, 91%);
 }
 
 
@@ -264,6 +267,7 @@ height: 125vh;
   background-repeat: no-repeat;
   color: rgb(14, 11, 11);
   font-size: 20px;
+  font-family: "Lucida Console", "Courier New", monospace;
 }
 .drop{
   width: 200px;
@@ -302,4 +306,24 @@ h3{
   border: 3px solid rgb(46, 119, 179);
   padding: 10px;
   border-radius: 20px;
+}
+
+.login{
+  color: #625EB1;
+}
+
+
+.calendaradmin{
+  position:fixed;
+ top: 15%;
+ right: 50%;  
+}
+.bcadmin{
+ position:fixed;
+ top: 60%;
+ right: 50%;
+}
+.h2ad{
+ 
+ text-align: center;
 }
